@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    dataBinding {
+        enabled true
+    }
+
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.ksajja.newone"
+        minSdkVersion 16
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode 1
+        versionName "1.3"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", "\"https://ksajjacstaging.ksajjahc.com/newonestg/newone/\""
+        resValue "string", "app_name", "ksajja"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //Using default for now. Can be changed to "free", "paid" etc later
+    flavorDimensions "default"
+    productFlavors {
+        staging {
+            buildConfigField "String", "BASE_URL", "\"https://ksajjacstaging.ksajjahc.com/newonestg/newone/\""
+            //applicationIdSuffix ".stg"
+            resValue "string", "app_name", "ksajja Staging"
+        }
+        enterprise {
+            buildConfigField "String", "BASE_URL", "\"https://ksajjacstaging.ksajjahc.com/newoneent/newone/\""
+            //applicationIdSuffix ".ent"
+            resValue "string", "app_name", "ksajja Enterprise"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:1.1.0-alpha02"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation "androidx.recyclerview:recyclerview:1.1.0-alpha02"
+    implementation "com.google.android.material:material:1.1.0-alpha04"
+
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha02'
+    //Lifecycle
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha02'
+    //Room
+    implementation 'androidx.room:room-runtime:2.1.0-alpha04'
+    implementation 'androidx.room:room-compiler:2.1.0-alpha04'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.2-alpha02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha02'
+
+    //compile 'jp.wasabeef:recyclerview-animators:2.2.7'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'io.jsonwebtoken:jjwt:0.9.0'
+
+    //View injection library
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'androidx.databinding:databinding-compiler:3.5.0-alpha06'
+
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
+    //Google Analytics & Standard Exception Parser
+    implementation 'com.google.android.gms:play-services-analytics:16.0.7'
+    //Onboarding
+    implementation 'com.codemybrainsout.onboarding:onboarder:1.0.4'
+
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    //Leak Canary - To detect memory leaks. Only in debug mode. Release dependency is dummy 'no-op' to prevent compilation issues.
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+
+    //Circular ImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //advanced recyclerview library - https://github.com/h6ah4i/android-advancedrecyclerview
+    implementation('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.11.0@aar') {
+        transitive = true
+    }
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation 'com.github.bumptech.glide:compiler:4.8.0'
+
+    //Run time permissions plugin
+    apply plugin: 'com.livinglifetechway.quickpermissions_plugin'
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'kotlin-kapt'
+
+    //Parceler - Create easy Parcelable
+    implementation 'org.parceler:parceler-api:1.1.11'
+    kapt 'org.parceler:parceler:1.1.11'
+
+}

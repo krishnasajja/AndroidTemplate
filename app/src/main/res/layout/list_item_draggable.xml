@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools"
+                                   android:id="@+id/taskListCardView"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   app:cardElevation="0dp"
+                                   app:cardPreventCornerOverlap="true"
+                                   app:cardUseCompatPadding="false">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taskListItemContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_swipe_item_neutral"
+        android:foreground="?attr/selectableItemBackground"
+        android:minHeight="@dimen/list_item_height"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/taskListAlertButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_warning_red_400_24dp"
+            android:visibility="gone"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/taskListDeleteButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:clickable="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_delete_black_24px"
+            android:tint="@color/colorGray_400"
+            android:visibility="visible"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!-- NOTE: the drag handle should set android:clickable=true not to propagate click events to the parent views -->
+        <View
+            android:id="@+id/drag_handle"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="top|start"
+            android:background="#20000000"
+            android:clickable="true"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/taskListItemCheckbox"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/taskTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:gravity="center|center_vertical"
+            android:textColor="@color/colorGray_900"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/taskSubTitleTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/taskListItemCheckbox"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Title of text goes here" />
+
+        <TextView
+            android:id="@+id/taskSubTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorGray_600"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/taskListExtraMenu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/taskListItemCheckbox"
+            app:layout_constraintTop_toBottomOf="@+id/taskTitleTextView"
+            tools:text="Sub-title goes here." />
+
+        <LinearLayout
+            android:id="@+id/taskListExtraMenu"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/taskListItemCheckbox"
+            app:layout_constraintTop_toBottomOf="@id/taskSubTitleTextView">
+
+            <ImageView
+                android:id="@+id/taskListViewDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/view_details"
+                android:padding="5dp"
+                android:src="@drawable/ic_view_agenda_grey_800_24dp"
+                android:tint="@color/colorGray_400" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:src="@drawable/ic_gifting_note_gray"
+                android:tint="@color/colorGray_400" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:src="@drawable/ic_search_white_24px"
+                android:tint="@color/colorGray_400" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

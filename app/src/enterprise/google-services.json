@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "531270396258",
+    "firebase_url": "https://do-more-internal.firebaseio.com",
+    "project_id": "do-more-internal",
+    "storage_bucket": "do-more-internal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531270396258:android:b654132ca242146e",
+        "android_client_info": {
+          "package_name": "com.ksajja.newone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531270396258-ea2lnhs5ie8e3q3cn43s1amf2b2vuiln.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_rU1MjYPiGo5aQieaEuhPVpJ5zs_dyJw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

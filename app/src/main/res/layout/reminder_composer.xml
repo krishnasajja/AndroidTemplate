@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.ksajja.newone.widgets.reminder_composer.models.ReminderComposerViewModel" />
+
+        <variable
+            name="view"
+            type="com.ksajja.newone.widgets.reminder_composer.ReminderComposer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:background="@color/white"
+        android:paddingTop="5dp">
+
+        <EditText
+            android:id="@+id/reminder_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="38dp"
+            android:background="@android:color/transparent"
+            android:hint="Remind me to..."
+            android:inputType="textCapSentences"
+            android:maxLines="@{safeUnbox(viewModel.showBiggerInputArea) ? 2 : 1}"
+            android:paddingBottom="5dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="@={viewModel.taskTitle}"
+            android:textColor="@color/color_dark_blue_900"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/add_button"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/rounded_rectangle_blue"
+            android:onClick="@{view.onItemClicked}"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toTopOf="@id/fist_content_bottom_base_line"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="10dp"
+            app:layout_goneMarginBottom="3dp" />
+
+        <LinearLayout
+            android:id="@+id/tab_buttons_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="@{viewModel.showEditTabMenu ? View.VISIBLE : View.GONE}"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/add_button"
+            app:layout_constraintTop_toBottomOf="@id/reminder_input" />
+
+        <View
+            android:id="@+id/fist_content_bottom_base_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab_buttons_content"
+            android:background="@color/inactive_indicator"
+            android:visibility="@{viewModel.showEditContent ? View.VISIBLE : View.GONE}"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:height="@{viewModel.showEditContent ? viewModel.getEditContentHeight : @dimen/edit_view_gone_height}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fist_content_bottom_base_line" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

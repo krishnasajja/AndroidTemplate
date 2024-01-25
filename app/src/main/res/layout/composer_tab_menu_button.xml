@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ksajja.newone.widgets.reminder_composer.models.DefaultTabMenuBtnViewModel" />
+
+        <import type="androidx.core.content.ContextCompat" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@{ContextCompat.getColor(context, viewModel.getBackgroundRes)}">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:src="@{ContextCompat.getDrawable(context,viewModel.getButtonIconRes)}"
+            android:tint="@{ContextCompat.getColor(context,viewModel.getButtonTint)}"/>
+
+    </RelativeLayout>
+</layout>

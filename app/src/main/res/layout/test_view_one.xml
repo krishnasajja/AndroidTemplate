@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="view"
+            type="com.ksajja.newone.TestDatePickerView" />
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGray_100">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{view.onDatePickClicked}"
+                android:padding="5dp"
+                android:text="@{view.mDateText}"
+                android:textSize="18sp"
+                tools:text="Today" />
+
+            <TextView
+                android:id="@+id/dueDateTimeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="@{view.onTimePickClicked}"
+                android:padding="5dp"
+                android:text="@{view.mTimeText}"
+                android:textSize="18sp"
+                tools:text="09:00 AM" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
